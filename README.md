@@ -1,5 +1,5 @@
 # CHIP-8 Emulator
-A CHIP-8 emulator in C++
+A CHIP-8 emulator in C++, utilizing the terminal as a display
 
 ## Compiling and Running
 Requires cmake:
