@@ -47,6 +47,7 @@ Chip8::Chip8()
   op_table[0x5u] = &Chip8::OP_5XY0;
   op_table[0x6u] = &Chip8::OP_6XNN;
   op_table[0x7u] = &Chip8::OP_7XNN;
+  op_table[0x8u] = &Chip8::Table8;
   op_table[0x9u] = &Chip8::OP_9XYO;
   op_table[0xAu] = &Chip8::OP_ANNN;
   op_table[0xDu] = &Chip8::OP_DXYN;
@@ -240,6 +241,25 @@ void Chip8::OP_8XY3()
   uint8_t j = (opcode & 0x00F0u) >> 4u;
 
   variable_registers[i] ^= variable_registers[j];
+}
+
+void Chip8::OP_8XY4()
+{
+  uint8_t i = (opcode & 0x0F00u) >> 8u;
+  uint8_t j = (opcode & 0x00F0u) >> 4u;
+
+  //Eval the variable register carry flag if overflow
+  variable_registers[0x0Fu] = ((variable_registers[i] + variable_registers[j]) > 0xFF);
+
+  //If overflow, will wrap (maybe..)
+  uint16_t sum = variable_registers[i] + variable_registers[j];
+  //variable_registers[i] += variable_registers[j];
+  variable_registers[i] = sum & 0xFFu;
+}
+
+void Chip8::OP_8XY5()
+{
+  
 }
 
 void Chip8::OP_9XYO()

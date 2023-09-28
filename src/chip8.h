@@ -46,9 +46,14 @@ private:
   void OP_8XY2();
   void OP_8XY3();
   void OP_8XY4();
+  void OP_8XY5();
+  void OP_8XY6();
+  void OP_8XYE();
   void OP_9XYO();
   void OP_ANNN();
   void OP_DXYN();
+  void OP_FX33();
+  void OP_FX55();
 
   void OP_NULL();
 

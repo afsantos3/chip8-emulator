@@ -5,7 +5,7 @@
 const unsigned int DISPLAY_WIDTH = 64;
 const unsigned int DISPLAY_HEIGHT = 32;
 
-const char PIXEL_ON = '#';
+const std::string PIXEL_ON = "█";
 const char PIXEL_OFF = ' ';
 
 Display::Display(){}
